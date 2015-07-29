@@ -1,0 +1,41 @@
+{
+  "name": "stilr-classnames",
+  "version": "0.0.0",
+  "description": "Define Stilr styles within component definitions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "YJ Yang <chcokr@gmail.com>",
+  "license": "MIT",
+  "peerDependencies": {
+    "stilr": "*"
+  },
+  "dependencies": {
+    "classnames": "*",
+    "lodash.isfinite": "*",
+    "lodash.rest": "*",
+    "stilr": "*"
+  },
+  "devDependencies": {
+    "chai": "*"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chcokr/stilr-classnames.git"
+  },
+  "keywords": [
+    "stilr",
+    "inline",
+    "css",
+    "style",
+    "react"
+  ],
+  "bugs": {
+    "url": "https://github.com/chcokr/stilr-classnames/issues"
+  },
+  "homepage": "https://github.com/chcokr/stilr-classnames#readme"
+}
