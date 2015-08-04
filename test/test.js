@@ -33,6 +33,15 @@ describe('Function', function() {
     expect(result.style).to.have.string('50')
       .and.not.have.string('50px');
   });
+  it('should not convert integer zIndex to px', function () {
+    stilr.clear();
+    var result = stilrCx({
+      returnStyle: true,
+      zIndex: 110
+    });
+    expect(result.style).to.have.string('110')
+      .and.not.have.string('110px');
+  });
   it('should return a string containing given a class name', function () {
     stilr.clear();
     expect(stilrCx({display: 'flex'}, 'yo').className).to.have.string('yo');
