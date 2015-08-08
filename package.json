@@ -1,6 +1,6 @@
 {
   "name": "stilr-classnames",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Define Stilr styles within component definitions.",
   "main": "index.js",
   "scripts": {
