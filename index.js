@@ -20,7 +20,10 @@ function stilrClassnames() {
       var val = style[key];
 
       var valParsed = val;
-      if (isFinite(val) && key !== 'fontWeight' && key !== 'zIndex') {
+      if (isFinite(val) &&
+          key !== 'flexGrow' &&
+          key !== 'fontWeight' &&
+          key !== 'zIndex') {
         valParsed += 'px';
       }
 

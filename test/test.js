@@ -24,6 +24,15 @@ describe('Function', function() {
     });
     expect(result.style).to.have.string('50px');
   });
+  it('should not convert integer flexGrow to px', function () {
+    stilr.clear();
+    var result = stilrCx({
+      returnStyle: true,
+      flexGrow: 234
+    });
+    expect(result.style).to.have.string('234')
+      .and.not.have.string('234px');
+  });
   it('should not convert integer fontWeight to px', function () {
     stilr.clear();
     var result = stilrCx({
