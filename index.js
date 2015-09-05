@@ -1,5 +1,4 @@
 var _ = {
-  isPlainObject: require('lodash.isplainobject'),
   rest: require('lodash.rest')
 };
 var cx = require('classnames');
@@ -21,21 +20,7 @@ function stilrClassnames() {
 
       var val = style[key];
 
-      if (_.isPlainObject(val)) {
-        // This part makes media queries and pseudoclasses work.
-        finalStyle[key] = val;
-        continue;
-      }
-
-      var valParsed = val;
-      if (isFinite(val) &&
-          key !== 'flexGrow' &&
-          key !== 'fontWeight' &&
-          key !== 'zIndex') {
-        valParsed += 'px';
-      }
-
-      finalStyle[key] = valParsed + ' !important';
+      finalStyle[key] = val;
 
     }
   }

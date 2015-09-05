@@ -8,14 +8,6 @@ describe('Function', function() {
     stilr.clear();
     expect(stilrCx({display: 'flex'}).className).to.be.a('string');
   });
-  it('should mark styles as !important', function () {
-    stilr.clear();
-    var result = stilrCx({
-      returnStyle: true,
-      display: 'flex'
-    });
-    expect(result.style).to.have.string('flex !important');
-  });
   it('should convert integers to px unless fontWeight', function () {
     stilr.clear();
     var result = stilrCx({
