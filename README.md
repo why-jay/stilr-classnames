@@ -59,7 +59,7 @@ This reliance on [classnames](https://github.com/JedWatson/classnames) gives
 the additional benefit, among many, of comfortably disregarding falsy values
 being passed into the function.
 
-```
+```JSX
 <div className={stilrcx({float: 'left'}, false, undefined)} />
 // -> <div className="_xo3r3" />
 ```
