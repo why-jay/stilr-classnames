@@ -9,22 +9,9 @@ function stilrClassnames() {
   var style = args[0];
   var classes = _.rest(args);
 
-  var finalStyle = {};
-  for (var key in style) {
-    if (style.hasOwnProperty(key)) {
+  classes.push(stilr.create({x: style}).x);
 
-      var val = style[key];
-
-      finalStyle[key] = val;
-
-    }
-  }
-
-  var allClasses = classes;
-  allClasses.push(stilr.create({x: finalStyle}).x);
-
-  var rtn = cx.apply(this, allClasses);
-  return rtn;
+  return cx.apply(this, classes);
 }
 
 module.exports = stilrClassnames;
