@@ -16,6 +16,15 @@ describe('Function', function() {
     });
     expect(result.style).to.have.string('50px');
   });
+  it('should not convert integer flex to px', function () {
+    stilr.clear();
+    var result = stilrCx({
+      returnStyle: true,
+      flex: 192
+    });
+    expect(result.style).to.have.string('192')
+      .and.not.have.string('192px');
+  });
   it('should not convert integer flexGrow to px', function () {
     stilr.clear();
     var result = stilrCx({
