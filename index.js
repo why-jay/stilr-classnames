@@ -1,4 +1,5 @@
 var _ = {
+  isPlainObject: require('lodash.isplainobject'),
   rest: require('lodash.rest')
 };
 var cx = require('classnames');
@@ -19,6 +20,12 @@ function stilrClassnames() {
     if (style.hasOwnProperty(key)) {
 
       var val = style[key];
+
+      if (_.isPlainObject(val)) {
+        // This part makes media queries and pseudoclasses work.
+        finalStyle[key] = val;
+        continue;
+      }
 
       var valParsed = val;
       if (isFinite(val) &&

@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "classnames": "*",
+    "lodash.isplainobject": "^3.2.0",
     "lodash.rest": "*"
   },
   "devDependencies": {

@@ -69,4 +69,26 @@ describe('Function', function() {
     stilr.clear();
     expect(stilrCx({}, false, undefined, '').className).to.equal('');
   });
+  it('should handle pseudoclasses just like stilr does', function () {
+    stilr.clear();
+    var result = stilrCx({
+      returnStyle: true,
+      ':hover': {
+        color: 'red'
+      }
+    });
+    expect(result.style).to.have.string(':hover{color:red;}');
+  });
+  it('should handle media queries just like stilr does', function () {
+    stilr.clear();
+    var result = stilrCx({
+      returnStyle: true,
+      '@media screen and (max-width:600px)': {
+        fontSize: 16
+      }
+    });
+    expect(result.style)
+      .to.have.string('@media screen and (max-width:600px){.')
+      .to.have.string('{font-size:16px;}}');
+  });
 });
