@@ -65,4 +65,8 @@ describe('Function', function() {
     stilr.clear();
     expect(stilrCx({}).className).to.equal('');
   });
+  it('should exclude falsy values from class names', function () {
+    stilr.clear();
+    expect(stilrCx({}, false, undefined, '').className).to.equal('');
+  });
 });
