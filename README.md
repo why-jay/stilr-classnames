@@ -4,9 +4,9 @@ The function returned by this module helps you define
 [Stilr](https://github.com/kodyl/stilr) styles within a component definition.
 
 ```JSX
-var style = require('stilr-classnames');
+var stilrcx = require('stilr-classnames');
 
-<button {...style({color: 'red'})}>Hello</button>
+<button className={stilrcx({color: 'red'})}>Hello</button>
 // -> <button className="_a39va">Hello</button>
 ```
 
@@ -14,7 +14,7 @@ Optional second, third, and so on, parameters can define `className`s that must
 be included in the final `className`.
 
 ```JSX
-<button {...style({color: 'red'}, 'yo1', 'yo2')}>Hello</button>
+<button className={stilrcx({color: 'red'}, 'yo1', 'yo2')}>Hello</button>
 // -> <button className="_a39va yo1 yo2">Hello</button>
 ```
 
@@ -24,7 +24,7 @@ This is particularly helpful when you embed components within other components.
 class ButtonWithRedText extends React.Component {
   render() {
     return (
-      <button {...style({color: 'red'}, this.props.className)}>
+      <button className={stilrcx({color: 'red'}, this.props.className)}>
         {this.props.children}
       </button>
     );
@@ -34,7 +34,7 @@ class ButtonWithRedText extends React.Component {
 class ButtonWithRedTextAndBlueBackground extends React.Component {
   render() {
     return (
-      <Foo {...style({backgroundColor: 'blue'})} />
+      <Foo className={stilrcx({backgroundColor: 'blue'})} />
     );
   }
 }
@@ -46,15 +46,13 @@ passed into the famous
 That is, the following two achieve equivalent results:
 
 ```JSX
-var stilrcx = require('stilr-classnames');
-
-<div {...stilrcx({float: 'left'}, 'yo1', {yo2: false)} />
+stilrcx({float: 'left'}, 'yo1', {yo2: false})
 ```
 
 ```JSX
 var cx = require('classnames');
 
-<div className={cx('_v092z', 'yo1', {yo2: false})} />
+cx('_v092z', 'yo1', {yo2: false})
 ```
 
 This reliance on [classnames](https://github.com/JedWatson/classnames) gives
@@ -62,6 +60,6 @@ the additional benefit, among many, of comfortably disregarding falsy values
 being passed into the function.
 
 ```
-<div {...stilrcx({float: 'left'}, false, undefined)} />
+<div className={stilrcx({float: 'left'}, false, undefined)} />
 // -> <div className="_xo3r3" />
 ```

@@ -1,5 +1,4 @@
 var _ = {
-  isPlainObject: require('lodash.isplainobject'),
   rest: require('lodash.rest')
 };
 var cx = require('classnames');
@@ -12,30 +11,11 @@ function stilrClassnames() {
 
   var finalStyle = {};
   for (var key in style) {
-    if (key === 'returnStyle') {
-      // This is a special key that is used in our tests.
-      // See tests.
-      continue;
-    }
     if (style.hasOwnProperty(key)) {
 
       var val = style[key];
 
-      if (_.isPlainObject(val)) {
-        // This part makes media queries and pseudoclasses work.
-        finalStyle[key] = val;
-        continue;
-      }
-
-      var valParsed = val;
-      if (isFinite(val) &&
-          key !== 'flexGrow' &&
-          key !== 'fontWeight' &&
-          key !== 'zIndex') {
-        valParsed += 'px';
-      }
-
-      finalStyle[key] = valParsed + ' !important';
+      finalStyle[key] = val;
 
     }
   }
@@ -43,12 +23,7 @@ function stilrClassnames() {
   var allClasses = classes;
   allClasses.push(stilr.create({x: finalStyle}).x);
 
-  var rtn = {
-    className: cx.apply(this, allClasses)
-  };
-  if (style.returnStyle) {
-    rtn.style = stilr.render();
-  }
+  var rtn = cx.apply(this, allClasses);
   return rtn;
 }
 
