@@ -13,8 +13,7 @@
   },
   "dependencies": {
     "classnames": "*",
-    "lodash.rest": "*",
-    "stilr": "*"
+    "lodash.rest": "*"
   },
   "devDependencies": {
     "chai": "*"
