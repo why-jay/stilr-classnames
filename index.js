@@ -11,11 +11,6 @@ function stilrClassnames() {
 
   var finalStyle = {};
   for (var key in style) {
-    if (key === 'returnStyle') {
-      // This is a special key that is used in our tests.
-      // See tests.
-      continue;
-    }
     if (style.hasOwnProperty(key)) {
 
       var val = style[key];
@@ -28,12 +23,7 @@ function stilrClassnames() {
   var allClasses = classes;
   allClasses.push(stilr.create({x: finalStyle}).x);
 
-  var rtn = {
-    className: cx.apply(this, allClasses)
-  };
-  if (style.returnStyle) {
-    rtn.style = stilr.render();
-  }
+  var rtn = cx.apply(this, allClasses);
   return rtn;
 }
 
