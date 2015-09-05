@@ -39,3 +39,20 @@ class ButtonWithRedTextAndBlueBackground extends React.Component {
   }
 }
 ```
+
+In fact, any parameter beyond the first is treated as if it is a parameter being
+passed into the famous
+[JedWatson/classnames](https://github.com/JedWatson/classnames) function.
+That is, the following two achieve equivalent results:
+
+```JSX
+var stilrcx = require('stilr-classnames');
+
+<div {...stilrcx({float: 'left'}, 'yo1', {yo2: false)} />
+```
+
+```JSX
+var cx = require('classnames');
+
+<div className={cx('_v092z', 'yo1', {yo2: false})} />
+```
