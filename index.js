@@ -1,5 +1,4 @@
 var _ = {
-  isFinite: require('lodash.isfinite'),
   rest: require('lodash.rest')
 };
 var cx = require('classnames');

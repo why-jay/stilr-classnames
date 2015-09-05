@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "classnames": "*",
-    "lodash.isfinite": "*",
     "lodash.rest": "*",
     "stilr": "*"
   },
