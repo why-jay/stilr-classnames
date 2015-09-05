@@ -12,6 +12,8 @@ function stilrClassnames() {
   var finalStyle = {};
   for (var key in style) {
     if (key === 'returnStyle') {
+      // This is a special key that is used in our tests.
+      // See tests.
       continue;
     }
     if (style.hasOwnProperty(key)) {
