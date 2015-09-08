@@ -1,8 +1,7 @@
 var _ = {
   isFinite: require('lodash.isfinite'),
   isPlainObject: require('lodash.isplainobject'),
-  isString: require('lodash.isstring'),
-  rest: require('lodash.rest')
+  isString: require('lodash.isstring')
 };
 var cx = require('classnames');
 var stilr = require('stilr');
