@@ -13,7 +13,9 @@
   },
   "dependencies": {
     "classnames": "*",
-    "lodash.rest": "*"
+    "lodash.isfinite": "^3.2.0",
+    "lodash.isplainobject": "^3.2.0",
+    "lodash.isstring": "^3.0.1"
   },
   "devDependencies": {
     "chai": "*"

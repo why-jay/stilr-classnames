@@ -11,7 +11,6 @@ describe('Function', function() {
   it('should convert integers to px unless fontWeight', function () {
     stilr.clear();
     stilrCx({
-      returnStyle: true,
       fontSize: 50
     });
     expect(stilr.render()).to.have.string('50px');
@@ -19,7 +18,6 @@ describe('Function', function() {
   it('should not convert integer flex to px', function () {
     stilr.clear();
     stilrCx({
-      returnStyle: true,
       flex: 192
     });
     expect(stilr.render()).to.have.string('192')
@@ -28,7 +26,6 @@ describe('Function', function() {
   it('should not convert integer flexGrow to px', function () {
     stilr.clear();
     stilrCx({
-      returnStyle: true,
       flexGrow: 234
     });
     expect(stilr.render()).to.have.string('234')
@@ -37,7 +34,6 @@ describe('Function', function() {
   it('should not convert integer fontWeight to px', function () {
     stilr.clear();
     stilrCx({
-      returnStyle: true,
       fontWeight: 50
     });
     expect(stilr.render()).to.have.string('50')
@@ -46,7 +42,6 @@ describe('Function', function() {
   it('should not convert integer zIndex to px', function () {
     stilr.clear();
     stilrCx({
-      returnStyle: true,
       zIndex: 110
     });
     expect(stilr.render()).to.have.string('110')
@@ -73,7 +68,6 @@ describe('Function', function() {
   it('should handle pseudoclasses just like stilr does', function () {
     stilr.clear();
     stilrCx({
-      returnStyle: true,
       ':hover': {
         color: 'red'
       }
@@ -83,7 +77,6 @@ describe('Function', function() {
   it('should handle media queries just like stilr does', function () {
     stilr.clear();
     stilrCx({
-      returnStyle: true,
       '@media screen and (max-width:600px)': {
         fontSize: 16
       }
@@ -91,5 +84,12 @@ describe('Function', function() {
     expect(stilr.render())
       .to.have.string('@media screen and (max-width:600px){.')
       .to.have.string('{font-size:16px;}}');
+  });
+  it('should help prototypal inheritance of styles', function () {
+    stilr.clear();
+    stilrCx({color: 'red'}, {backgroundColor: 'blue'});
+    expect(stilr.render())
+      .to.have.string('color:red')
+      .to.have.string('background-color:blue');
   });
 });

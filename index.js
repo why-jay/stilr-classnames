@@ -1,17 +1,45 @@
 var _ = {
+  isFinite: require('lodash.isfinite'),
+  isPlainObject: require('lodash.isplainobject'),
+  isString: require('lodash.isstring'),
   rest: require('lodash.rest')
 };
 var cx = require('classnames');
 var stilr = require('stilr');
 
 function stilrClassnames() {
-  var args = arguments;
-  var style = args[0];
-  var classes = _.rest(args);
+  var styleDefinition = {};
+  var nonStyleArgs = [];
 
-  classes.push(stilr.create({x: style}).x);
+  for (var i = 0; i < arguments.length; i += 1) {
+    var arg = arguments[i];
 
-  return cx.apply(this, classes);
+    if (!_.isPlainObject(arg)) {
+      nonStyleArgs.push(arg);
+    } else {
+      var keys = Object.keys(arg);
+
+      var nonStylePairs = {};
+
+      for (var j = 0; j < keys.length; j += 1) {
+        var key = keys[j];
+        var val = arg[key];
+
+        if (_.isFinite(val) || _.isPlainObject(val) || _.isString(val)) {
+          styleDefinition[key] = val;
+        } else {
+          nonStylePairs[key] = val;
+        }
+      }
+
+      nonStyleArgs.push(nonStylePairs);
+    }
+  }
+
+  var cxArgs = nonStyleArgs;
+  cxArgs.push(stilr.create({x: styleDefinition}).x);
+
+  return cx.apply(this, cxArgs);
 }
 
 module.exports = stilrClassnames;
